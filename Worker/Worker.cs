@@ -28,7 +28,7 @@ namespace Worker
                 int dots = message.Split('.').Length - 1;
                 Thread.Sleep(dots * 1000);
 
-                Console.WriteLine(" [x] Tasca acabada");
+                Console.WriteLine(" [{0}] Tasca acabada", DateTime.Now.ToLongTimeString());
 
                 broker.FeinaAcabada(ea);
 
