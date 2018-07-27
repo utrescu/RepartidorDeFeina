@@ -11,6 +11,7 @@ namespace Worker
     {
         private const string Host = "172.99.0.2";
         private const string NomCua = "feina";
+        private const string NomExchange = "resultats";
         private const string MESSAGE_WAIT = " [*] Esperant feina.";
         private const string MESSAGE_WORK_START = " [{0}] Fent la tasca: {1}";
         private const string MESSAGE_WORK_END = " [{0}] Tasca acabada";
@@ -21,7 +22,10 @@ namespace Worker
 
             IFeinesService broker = new FeinesService();
             broker.Connecta(Host);
+            // Cua per rebre les tasques
             broker.CreaCua(NomCua, 1);
+            // Cua per enviar els resultats
+            broker.CreaBroadcast(NomExchange);
 
             Console.WriteLine(MESSAGE_WAIT);
 
@@ -40,6 +44,9 @@ namespace Worker
                 Console.WriteLine(MESSAGE_WORK_END, DateTime.Now.ToLongTimeString());
 
                 broker.MissatgeProcessat(ea);
+
+                // Notifica als espectadors
+                broker.EnviaBroadcast(NomExchange, "Acabat: " + message);
 
             };
 

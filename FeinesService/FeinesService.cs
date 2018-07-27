@@ -79,7 +79,7 @@ namespace Feines
 
         // Broadcast ------
 
-        public void CreaBroadcast(string exchange, string cua)
+        public void CreaBroadcast(string exchange)
         {
             // Amb els exchange de tipus fanout s'envia tot el rebut a tothom
             // que l'escolti

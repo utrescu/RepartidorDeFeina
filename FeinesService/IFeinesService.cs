@@ -12,7 +12,7 @@ namespace Feines
         void CreaCua(string nom, int mida);
         bool EnviaALaCua(string cua, string text);
 
-        void CreaBroadcast(string exchange, string cua);
+        void CreaBroadcast(string exchange);
         bool EnviaBroadcast(string cua, string text);
         string SubscriuABroadcast(string exchange);
 
