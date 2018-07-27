@@ -23,7 +23,7 @@ namespace Worker
             {
                 var body = ea.Body;
                 var message = Encoding.UTF8.GetString(body);
-                Console.WriteLine(" [x] Fent la tasca: {0}", message);
+                Console.WriteLine(" [{0}] Fent la tasca: {1}", DateTime.Now.ToLongTimeString(), message);
 
                 int dots = message.Split('.').Length - 1;
                 Thread.Sleep(dots * 1000);
@@ -34,7 +34,7 @@ namespace Worker
 
             };
 
-            broker.RebreFeina("feina", consumer);
+            broker.RebreDeLaCua("feina", consumer);
             Console.WriteLine("Prem [enter] per sortir.");
             Console.ReadLine();
             broker.desconnecta();

@@ -10,10 +10,10 @@ namespace Feines
         void desconnecta();
         void creaCua(string nom);
         void creaCua(string nom, int mida);
-        bool EnviaFeina(string cua, string text);
+        bool EnviaALaCua(string cua, string text);
 
         EventingBasicConsumer EsperaFeina();
-        void RebreFeina(string cua, EventingBasicConsumer consumer);
+        void RebreDeLaCua(string cua, EventingBasicConsumer consumer);
         void FeinaAcabada(BasicDeliverEventArgs ea);
     }
 }

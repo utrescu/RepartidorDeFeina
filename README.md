@@ -14,7 +14,7 @@ En l'exemple faig servir l'**exchange** per defecte. Normalment se n'ha de crear
 
 > No faig cap de les coses que s'han de fer: captura d'excepcions, reconnexions, etc... Només és una prova.
 
-PROPERAMENT: Emissor / Subscriptors
+> Sembla que hi ha un paquet EasyNetQ que simplifica el funcionament amb RabbitMQ des de NET.
 
 ## Requeriments
 
@@ -28,6 +28,8 @@ No importa en l'ordre en que s'engeguen els programes però jo sempre començo p
 
 - Si no hi ha cap receptor es queden en la cua de RabbitMQ fins que algú els demana
 - Si hi ha algun client en marxa el client n'agafa un
+
+> Els missatges tarden en ser processats tants segons com punts tinguin (es tracta de l'exemple de la web de RabbitMQ)
 
 L'inicio normalment:
 
