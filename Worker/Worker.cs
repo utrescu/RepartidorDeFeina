@@ -9,16 +9,19 @@ namespace Worker
 {
     class Program
     {
+        private const string Host = "172.99.0.2";
+        private const string NomCua = "feina";
+
         static void Main(string[] args)
         {
 
             IFeinesService broker = new FeinesService();
-            broker.connecta("172.99.0.2");
-            broker.creaCua("feina", 1);
+            broker.connecta(Host);
+            broker.creaCua(NomCua, 1);
 
             Console.WriteLine(" [*] Esperant feina.");
 
-            var consumer = broker.EsperaMissatge("feina");
+            var consumer = broker.EsperaMissatge(NomCua);
             consumer.Received += (model, ea) =>
             {
                 var body = ea.Body;
