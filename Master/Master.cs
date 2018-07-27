@@ -11,6 +11,9 @@ namespace newTask
         private const string NomCua = "feina";
         private const string Host = "172.99.0.2";
         private const string FitxerPerDefecte = "missatges.txt";
+        private const string PARAM_ERROR = "S'ha de passar UN sol paràmetre amb el nom del fitxer";
+        private const string FILE_ERROR = "El fitxer de missatges '{0}' no existeix";
+        private const string MESSAGE_SEND = "[{0}]  Enviant: {1}";
 
         private static string getFileFromArgs(string[] args)
         {
@@ -22,7 +25,7 @@ namespace newTask
 
             if (args.Length != 1)
             {
-                throw new ApplicationException("S'ha de passar UN sol paràmetre amb el nom del fitxer");
+                throw new ApplicationException(PARAM_ERROR);
             }
 
             var fitxer = args[0];
@@ -42,7 +45,6 @@ namespace newTask
             {
                 var fitxer = getFileFromArgs(args);
 
-
                 IFeinesService broker = new FeinesService();
 
                 broker.connecta(Host);
@@ -54,7 +56,7 @@ namespace newTask
                 System.IO.StreamReader file = new System.IO.StreamReader(fitxer);
                 while ((missatge = file.ReadLine()) != null)
                 {
-                    Console.WriteLine("[{0}]  Enviant: {1}", DateTime.Now.ToLongTimeString(), missatge);
+                    Console.WriteLine(MESSAGE_SEND, DateTime.Now.ToLongTimeString(), missatge);
                     broker.EnviaALaCua(NomCua, missatge);
                 }
 
@@ -63,7 +65,7 @@ namespace newTask
             }
             catch (System.IO.FileNotFoundException)
             {
-                Console.WriteLine("El fitxer de missatges '{0}' no existeix", args[0]);
+                Console.WriteLine(FILE_ERROR, args[0]);
             }
             catch (ApplicationException e)
             {
