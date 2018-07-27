@@ -18,20 +18,20 @@ namespace Feines
 
         }
 
-        public void connecta(string host)
+        public void Connecta(string host)
         {
             factory = new ConnectionFactory() { HostName = "172.99.0.2" };
             connection = factory.CreateConnection();
             channel = connection.CreateModel();
         }
 
-        public void desconnecta()
+        public void Desconnecta()
         {
             channel.Close();
             connection.Close();
         }
 
-        public void creaCua(string nom)
+        public void CreaCua(string nom)
         {
             channel.QueueDeclare(queue: nom,
                       durable: true,
@@ -40,7 +40,7 @@ namespace Feines
                       arguments: null);
         }
 
-        public void creaCua(string nom, int mida)
+        public void CreaCua(string nom, int mida)
         {
             channel.QueueDeclare(queue: nom,
                                   durable: true,
@@ -77,7 +77,9 @@ namespace Feines
             channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
         }
 
-        public void creaCuaBroadcast(string exchange, string cua)
+        // Broadcast ------
+
+        public void CreaBroadcast(string exchange, string cua)
         {
             // Amb els exchange de tipus fanout s'envia tot el rebut a tothom
             // que l'escolti
@@ -91,7 +93,7 @@ namespace Feines
             return true;
         }
 
-        public string EscoltaBroadcast(string exchange)
+        public string SubscriuABroadcast(string exchange)
         {
             channel.ExchangeDeclare(exchange, "fanout");
 

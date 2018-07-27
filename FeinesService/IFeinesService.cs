@@ -6,13 +6,15 @@ namespace Feines
     public interface IFeinesService
     {
 
-        void connecta(string host);
-        void desconnecta();
-        void creaCua(string nom);
-        void creaCua(string nom, int mida);
-        void creaCuaBroadcast(string exchange, string cua);
+        void Connecta(string host);
+        void Desconnecta();
+        void CreaCua(string nom);
+        void CreaCua(string nom, int mida);
         bool EnviaALaCua(string cua, string text);
+
+        void CreaBroadcast(string exchange, string cua);
         bool EnviaBroadcast(string cua, string text);
+        string SubscriuABroadcast(string exchange);
 
         EventingBasicConsumer EsperaMissatge(string cua);
         void MissatgeProcessat(BasicDeliverEventArgs ea);

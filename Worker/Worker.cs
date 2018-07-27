@@ -20,8 +20,8 @@ namespace Worker
         {
 
             IFeinesService broker = new FeinesService();
-            broker.connecta(Host);
-            broker.creaCua(NomCua, 1);
+            broker.Connecta(Host);
+            broker.CreaCua(NomCua, 1);
 
             Console.WriteLine(MESSAGE_WAIT);
 
@@ -45,7 +45,7 @@ namespace Worker
 
             Console.WriteLine(MESSAGE_END_PROGRAM);
             Console.ReadLine();
-            broker.desconnecta();
+            broker.Desconnecta();
         }
     }
 }

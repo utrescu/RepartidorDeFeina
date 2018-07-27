@@ -47,8 +47,8 @@ namespace newTask
 
                 IFeinesService broker = new FeinesService();
 
-                broker.connecta(Host);
-                broker.creaCua(NomCua);
+                broker.Connecta(Host);
+                broker.CreaCua(NomCua);
 
                 string missatge;
 
@@ -61,7 +61,7 @@ namespace newTask
                 }
 
                 file.Close();
-                broker.desconnecta();
+                broker.Desconnecta();
             }
             catch (System.IO.FileNotFoundException)
             {
