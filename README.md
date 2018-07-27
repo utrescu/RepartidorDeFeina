@@ -71,3 +71,7 @@ Client 2:
     [x] Tasca acabada
 
 Els clients continuen a l'espera fins que es prem la tecla 'enter' de manera que es poden tornar a fer enviaments mentre estan en marxa.
+
+Un exemple amb temps:
+
+![Exemple](exemple.png)
