@@ -37,6 +37,10 @@ Per exemple:
 
 ### Exemple
 
+Abans de fer res s'hauria de definir quina és la IP de Docker (o sigui, on és RabbitMQ). Per fer-ho s'ha d'editar la constant **Host** de cada un dels projectes i posar-hi la correcta.
+
+    private const string Host = "172.99.0.2";
+
 Inicio normalment el Master i comença a enviar les tasques a la cua:
 
     $ dotnet run
